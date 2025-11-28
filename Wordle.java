@@ -52,15 +52,12 @@ public class Wordle
     {
         for (int i = 0; i < guess.length(); i++)
         {
-            for (int j = 0; j < secret.length(); j++)
-            {
-                if (secret.charAt(i) == guess.charAt(i))
-                    resultRow[i] = 'G';
-                else if (containsChar(secret, guess.charAt(i)))
-                    resultRow[i] = 'Y';
-                else
-                    resultRow[i] = '_';
-            }
+            if (secret.charAt(i) == guess.charAt(i))
+                resultRow[i] = 'G';
+            else if (containsChar(secret, guess.charAt(i)))
+                resultRow[i] = 'Y';
+            else
+                resultRow[i] = '_';
         }
     }
 
@@ -84,7 +81,8 @@ public class Wordle
     public static void printBoard(char[][] guesses, char[][] results, int currentRow) 
     {
         System.out.println("Current board:");
-        for (int row = 0; row <= currentRow; row++) {
+        for (int row = 0; row <= currentRow; row++) 
+        {
             System.out.print("Guess " + (row + 1) + ": ");
             for (int col = 0; col < guesses[row].length; col++) 
             {
@@ -144,7 +142,7 @@ public class Wordle
                 System.out.print("Enter your guess (5-letter word): ");
                 guess = inp.readString(); // ... read from the standrad input
                 
-                if (guess.length() != 5) 
+                if (guess.length() != WORD_LENGTH) 
                 {
                     System.out.println("Invalid word. Please try again.");
                 }
